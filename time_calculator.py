@@ -35,6 +35,7 @@ def add_time(start, duration,day=None):
   # Edge case
   if ans_hour == 0:
     ans_hour =12
+  ans_hour =str(ans_hour)
 
   # total days 24 hr 1 day
   total_day = (total_hour // 24)
@@ -52,13 +53,13 @@ def add_time(start, duration,day=None):
   else:
     ans_minutes = str(ans_minutes)
   # returning logic
+  time_stamp = ans_hour+":"+ans_minutes+' '+ans_midday 
   if day == None:
     if total_day == 0 :
-      return str(ans_hour)+":"+ans_minutes+' '+ans_midday 
+      return  time_stamp
     if total_day == 1:
-      return str(ans_hour)+":"+ans_minutes+' '+ans_midday +' (next day)'
-    ans = str(ans_hour)+":"+ans_minutes+' '+ans_midday+' ('+ str(total_day)+' days later)'
-    return ans
+      return time_stamp +' (next day)'
+    return time_stamp+' ('+ str(total_day)+' days later)'
   else:
     ans_day = (day_map[day.lower().capitalize()]+total_day)%7
     for i, j in day_map.items():
@@ -66,9 +67,8 @@ def add_time(start, duration,day=None):
         ans_day= i
         break
     if total_day == 0 :
-      return str(ans_hour)+":"+ans_minutes+' '+ans_midday +', '+ans_day
+      return time_stamp +', '+ans_day
     if total_day == 1:
-      return str(ans_hour)+":"+ans_minutes+' '+ans_midday +', '+ans_day+' (next day)'
-    ans = str(ans_hour)+":"+ans_minutes+' '+ans_midday+', '+ans_day+' ('+ str(total_day)+' days later)'
-    return ans
+      return time_stamp +', '+ans_day+' (next day)'
+    return time_stamp+', '+ans_day+' ('+ str(total_day)+' days later)'
 
