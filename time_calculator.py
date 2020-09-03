@@ -1,4 +1,5 @@
 def add_time(start, duration,day=None):
+  # Maintaining Days in a week
   day_map ={
     "Saturday":0,
     "Sunday":1,
